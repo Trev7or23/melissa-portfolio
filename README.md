@@ -1,46 +1,81 @@
-# Astro Starter Kit: Basics
+# Melissa Gutiérrez — Portfolio
 
-```sh
-bun create astro@latest -- --template basics
+Personal portfolio and commission site for Melissa Gutiérrez, a visual artist
+specialising in realistic black-and-white graphite and charcoal portraits.
+
+Built with [Astro](https://astro.build), [Tailwind CSS v4](https://tailwindcss.com)
+and Zod-validated Markdown content collections.
+
+## Stack
+
+| Concern   | Choice                                              |
+| --------- | --------------------------------------------------- |
+| Framework | Astro 7 (static output)                             |
+| Styling   | Tailwind CSS v4 — design tokens live in `@theme`    |
+| Content   | Astro content collections (glob loader) + Zod schema |
+| Runtime   | [Bun](https://bun.sh)                               |
+
+## Getting started
+
+```bash
+bun install
+bun run dev      # dev server
+bun run build    # static build into dist/
+bun run preview  # serve the production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/
+│   ├── description/   # artwork detail components
+│   ├── home/          # landing page sections
+│   └── shared/        # header and footer
+├── content/
+│   └── artworks/      # one Markdown file per artwork
+├── layouts/           # page shell (fonts, header, footer)
+├── pages/
+│   ├── index.astro    # landing page
+│   └── pintura/       # /pintura/[slug] detail route
+├── styles/global.css  # Tailwind entry point and design tokens
+└── content.config.ts  # artworks collection and Zod schema
+designs/               # visual brief the implementation was built from
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Adding an artwork
 
-## 🧞 Commands
+1. Create `src/content/artworks/<slug>.md`.
+2. Fill in the frontmatter. It is validated by the Zod schema in
+   `src/content.config.ts`, so a missing or malformed field fails the build
+   with the exact validation error.
 
-All commands are run from the root of the project, from a terminal:
+   | Field                 | Type                                                 | Required |
+   | --------------------- | ---------------------------------------------------- | -------- |
+   | `title`               | string                                               | yes      |
+   | `slug`                | string                                               | yes      |
+   | `year`                | number                                               | yes      |
+   | `series`              | string                                               | yes      |
+   | `kind`                | `obra-maestra` \| `serie` \| `estudio` \| `encargo` | yes      |
+   | `technique`           | string                                               | yes      |
+   | `support`             | string                                               | yes      |
+   | `dimensions`          | string                                               | yes      |
+   | `availability`        | string                                               | yes      |
+   | `description`         | string                                               | no       |
+   | `curatorialStatement` | string                                               | no       |
+   | `image`               | string (URL)                                         | no       |
+   | `order`               | number                                               | no       |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+3. Run `bun run build`.
 
-## 👀 Want to learn more?
+The artwork is picked up automatically: it appears in the gallery and gets its
+own page at `/pintura/<slug>`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Design system
+
+"Nocturne & Silver" — a dark theme with violet accents. Every colour, font and
+surface token from the brief is declared as a Tailwind theme variable in
+`src/styles/global.css`, so utilities such as `bg-surface-lowest`,
+`text-on-surface-variant` or `font-display` resolve straight from the design
+tokens. There is no hand-written CSS outside that file: components are styled
+exclusively with Tailwind utilities.
