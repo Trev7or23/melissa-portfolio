@@ -1,0 +1,30 @@
+---
+const SOCIAL_ITEMS = [
+	{ label: 'Instagram @melissagutierrez.art', icon: 'photo_camera', href: 'https://instagram.com' },
+	{ label: 'Dossier en Behance', icon: 'palette', href: 'https://behance.net' },
+	{ label: 'contacto@melissagutierrez.art', icon: 'mail', href: 'mailto:contacto@melissagutierrez.art' },
+];
+---
+
+<footer class="w-full bg-surface-lowest border-t border-hairline">
+	<div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+		<div class="flex items-baseline gap-3">
+			<span class="font-display text-[20px] font-medium leading-[28px] text-ink">Melissa Gutiérrez</span>
+			<span class="font-body text-[11px] leading-[14px] tracking-[0.08em] uppercase text-outline">© 2025</span>
+		</div>
+		<div class="flex items-center gap-5">
+			{
+				SOCIAL_ITEMS.map((item) => (
+					<a
+						href={item.href}
+						aria-label={item.label}
+						title={item.label}
+						class="text-outline transition-colors hover:text-primary"
+					>
+						<span class="material-symbols-outlined text-[18px] leading-[18px]">{item.icon}</span>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</footer>

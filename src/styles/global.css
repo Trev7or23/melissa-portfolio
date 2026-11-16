@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-body: "Manrope", sans-serif;
+
+  --color-bg: #121318;
+  --color-bg-alt: #090a0f;
+  --color-surface-lowest: #0d0e13;
+  --color-surface-low: #1a1b21;
+  --color-surface: #1e1f25;
+  --color-surface-high: #292a2f;
+  --color-surface-highest: #34343a;
+  --color-on-surface: #e3e1e9;
+  --color-on-surface-variant: #cbc3d7;
+  --color-outline: #958ea0;
+  --color-outline-variant: #494454;
+  --color-primary: #d0bcff;
+  --color-primary-container: #a078ff;
+  --color-on-primary: #3c0091;
+  --color-on-primary-container: #340080;
+  --color-secondary: #cebdff;
+  --color-secondary-container: #4f319c;
+  --color-on-secondary: #381385;
+  --color-on-secondary-container: #bea8ff;
+  --color-tertiary: #d2bbff;
+  --color-tertiary-container: #a476ff;
+  --color-on-tertiary: #3f008e;
+  --color-on-tertiary-container: #36007d;
+  --color-accent: #8b5cf6;
+  --color-accent-bright: #a78bfa;
+  --color-accent-deep: #7c3aed;
+  --color-hairline: #222433;
+  --color-hairline-active: #3b3f58;
+  --color-ink: #f3f4f6;
+  --color-ink-soft: #e3e1e9;
+  --color-ink-muted: #cbc3d7;
+  --color-ink-faint: #9ca3af;
+}
