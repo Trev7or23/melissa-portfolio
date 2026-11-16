@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArtworkDetail from '../../components/description/ArtworkDetail.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('artworks');
+	return entries.map((entry) => ({
+		params: { slug: entry.data.slug },
+		props: {
+			artwork: {
+				title: entry.data.title,
+				slug: entry.data.slug,
+				year: entry.data.year,
+				series: entry.data.series,
+				kind: entry.data.kind,
+				technique: entry.data.technique,
+				support: entry.data.support,
+				dimensions: entry.data.dimensions,
+				availability: entry.data.availability,
+				description: entry.data.description,
+				curatorialStatement: entry.data.curatorialStatement,
+				image: entry.data.image,
+				order: entry.data.order,
+			},
+		},
+	}));
+}
+
+const { artwork } = Astro.props;
+---
+
+<Layout>
+	<ArtworkDetail artwork={artwork} />
+</Layout>

@@ -1,0 +1,78 @@
+---
+interface Props {
+	artwork: {
+		title: string;
+		series?: string;
+		dimensions?: string;
+		technique?: string;
+		image?: string;
+		year?: number;
+		availability?: string;
+	};
+}
+
+const { artwork } = Astro.props;
+const artworkAlt = `Retrato hiperrealista en blanco y negro por ${artwork.title}`;
+---
+
+<section id="inicio" class="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden py-24">
+	<div class="absolute top-[25%] right-[25%] w-[480px] h-[480px] rounded-full blur-[140px] pointer-events-none bg-primary-container/20"></div>
+	<div class="absolute -bottom-20 left-10 w-[360px] h-[360px] rounded-full blur-[120px] pointer-events-none bg-accent/10"></div>
+	<div class="w-full max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+		<div class="lg:col-span-7 flex flex-col gap-4">
+			<div class="inline-flex items-center gap-2 px-3 py-1 rounded w-fit bg-surface-high">
+				<span class="w-[6px] h-[6px] rounded-full bg-primary animate-pulse"></span>
+				<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-on-surface-variant">Disponible para Encargos &amp; Colección 2025</span>
+			</div>
+			<h1 class="font-display text-[72px] font-normal leading-[84px] tracking-[-0.02em] text-ink">La verdad del alma a través de la sombra y el grafito.</h1>
+			<p class="font-body text-[18px] font-light leading-[28px] tracking-[0.01em] text-on-surface-variant max-w-4xl">Retratos realistas en blanco y negro ejecutados a mano con precisión minuciosa, capturando la intensidad psicológica y la memoria en cada trazo sobre algodón prensado.</p>
+			<div class="flex flex-wrap items-center gap-4 mt-4 pt-1">
+				<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary-container text-on-primary-container font-body text-xs font-medium tracking-[0.08em] uppercase rounded transition-all group shadow-[0_2px_8px_rgba(139,92,246,0.35)]">
+					<span class="material-symbols-outlined text-[20px] leading-[20px] transition-transform duration-300 group-hover:scale-110">chat</span>
+					<span>Contactar por WhatsApp</span>
+				</a>
+				<a href="#galeria" class="inline-flex items-center gap-2 px-8 py-3.5 bg-surface-low text-on-surface font-body text-xs font-medium tracking-[0.08em] uppercase rounded transition-all">
+					<span>Explorar Galería</span>
+					<span class="material-symbols-outlined text-[18px] leading-[18px]">arrow_downward</span>
+				</a>
+			</div>
+			<div class="flex items-center gap-6 pt-6 mt-4">
+				<div class="flex flex-col">
+					<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-outline">Técnica Principal</span>
+					<span class="font-body text-[13px] font-normal leading-[20px] text-on-surface">Grafito 9B–4H &amp; Carbón en Polvo</span>
+				</div>
+				<div class="w-px h-[32px] bg-surface-high"></div>
+				<div class="flex flex-col">
+					<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-outline">Soporte Tradicional</span>
+					<span class="font-body text-[13px] font-normal leading-[20px] text-on-surface">Fabriano &amp; Arches 300g/m²</span>
+				</div>
+			</div>
+		</div>
+		<div class="lg:col-span-5 relative mt-6 lg:mt-0">
+			<div class="absolute -inset-4 bg-linear-to-tr from-primary-container/20 to-transparent blur-2xl rounded-2xl -z-10"></div>
+			<div class="relative bg-surface-lowest p-4 md:p-6 rounded shadow-[0_24px_48px_-12px_rgba(0,0,0,0.75)]">
+				<div class="relative bg-surface-low p-2 md:p-3 overflow-hidden rounded">
+					{
+						artwork.image ? (
+							<img
+								alt={artworkAlt}
+								src={artwork.image}
+								class="w-full h-auto object-cover aspect-[3/4] grayscale contrast-1.125 brightness-0.95"
+							/>
+						) : (
+							<div class="w-full h-[480px] rounded bg-surface-high"></div>
+						)
+					}
+					<div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]"></div>
+				</div>
+				<div class="mt-4 flex items-center justify-between text-left">
+					<div>
+						<p class="font-display text-[24px] font-normal leading-[32px] text-ink m-0">{artwork.title}</p>
+						{artwork.series ? <p class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-on-surface-variant mt-2">{artwork.series}</p> : null}
+					</div>
+					{artwork.dimensions ? <span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.08em] px-2 py-1 bg-surface text-primary rounded">{artwork.dimensions}</span> : null}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
