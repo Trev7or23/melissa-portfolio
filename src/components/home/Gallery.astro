@@ -26,7 +26,7 @@ const others = artworks.filter((a) => a.slug !== featured?.slug);
 
 <section id="galeria" class="w-full bg-bg py-24">
 	<div class="w-full max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-16 flex flex-col gap-8">
-		<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+		<div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-reveal>
 			<div class="flex flex-col">
 				<div class="flex items-center gap-3 mb-2">
 					<span class="font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary before:content-[''] before:w-6 before:h-px before:bg-current before:mr-3">Colección &amp; Archivo Curado</span>
@@ -40,7 +40,7 @@ const others = artworks.filter((a) => a.slug !== featured?.slug);
 			</div>
 		</div>
 		{artworks.length > 0 && (
-			<a href={`/pintura/${featured?.slug}`} class="group grid grid-cols-1 lg:grid-cols-2 bg-surface-lowest rounded overflow-hidden cursor-pointer">
+			<a href={`/pintura/${featured?.slug}`} class="group grid grid-cols-1 lg:grid-cols-2 bg-surface-lowest rounded overflow-hidden cursor-pointer" data-reveal>
 				<div class="relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[68vh] lg:max-h-[720px] bg-surface">
 					{featured?.image ? <img alt={"Obra " + featured?.title + " por Melissa Gutiérrez"} src={featured?.image} class="w-full h-full object-cover grayscale contrast(1.125) transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]" /> : null}
 					<div class="absolute inset-0 bg-linear-to-t from-surface-lowest/70 via-transparent to-transparent transition-opacity duration-[500ms]"></div>
@@ -58,8 +58,8 @@ const others = artworks.filter((a) => a.slug !== featured?.slug);
 		)}
 		{others.length > 0 && (
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
-				{others.map((art) => (
-					<a href={`/pintura/${art.slug}`} class="group block relative bg-surface-lowest rounded overflow-hidden cursor-pointer">
+				{others.map((art, index) => (
+					<a href={`/pintura/${art.slug}`} class="group block relative bg-surface-lowest rounded overflow-hidden cursor-pointer" data-reveal style={`--reveal-delay: ${index * 90}ms`}>
 						<div class="relative overflow-hidden aspect-[3/4] bg-surface">
 							{art.image ? <img alt={"Obra " + art.title + " por Melissa Gutiérrez"} src={art.image} class="w-full h-full object-cover grayscale contrast(1.125) transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]" /> : null}
 							<div class="absolute inset-0 bg-linear-to-t from-surface-lowest via-transparent to-transparent opacity-80 transition-opacity duration-[500ms]"></div>
