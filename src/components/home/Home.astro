@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content';
 const entries = await getCollection('artworks');
 const artworks = entries.map((entry) => ({
 	title: entry.data.title,
-	slug: entry.data.slug,
+	slug: entry.id,
 	year: entry.data.year,
 	series: entry.data.series,
 	kind: entry.data.kind,
