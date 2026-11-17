@@ -7,12 +7,12 @@ const SOCIAL_ITEMS = [
 ---
 
 <footer class="w-full bg-surface-lowest border-t border-hairline">
-	<div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-		<div class="flex items-baseline gap-3">
-			<span class="font-display text-[20px] font-medium leading-[28px] text-ink">Melissa Gutiérrez</span>
-			<span class="font-body text-[11px] leading-[14px] tracking-[0.08em] uppercase text-outline">© 2025</span>
+	<div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-8 sm:py-10 flex flex-wrap items-center justify-between gap-x-4 sm:gap-x-6 gap-y-3" data-reveal>
+		<div class="flex items-baseline gap-2 sm:gap-3">
+			<span class="font-display text-[18px] font-medium leading-[24px] text-ink sm:text-[20px] sm:leading-[28px]">Melissa Gutiérrez</span>
+			<span class="font-body text-[10px] leading-[14px] tracking-[0.08em] uppercase text-outline sm:text-[11px]">© 2025</span>
 		</div>
-		<div class="flex items-center gap-5">
+		<div class="flex items-center gap-4 sm:gap-5">
 			{
 				SOCIAL_ITEMS.map((item) => (
 					<a
