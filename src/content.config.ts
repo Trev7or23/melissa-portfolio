@@ -4,7 +4,6 @@ import { glob } from 'astro/loaders';
 
 export const artworkSchema = z.object({
 	title: z.string().min(1, 'El título de la obra es obligatorio'),
-	slug: z.string().min(1, 'El slug de la obra es obligatorio'),
 	year: z.number().int().positive(),
 	series: z.string(),
 	kind: z.enum(['obra-maestra', 'serie', 'estudio', 'encargo']),

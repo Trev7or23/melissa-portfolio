@@ -1,6 +1,5 @@
 ---
 title: Silencio y Tempestad
-slug: silencio-y-tempestad
 year: 2024
 series: "Fuerza & Quietud"
 kind: obra-maestra
@@ -22,11 +21,3 @@ curatorialStatement: >-
 image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBgy6DLtRRn7wA3dFmsNaMI2nDtn85zhpKon30WTwMyeo1HCLc4qsfe-fDYnc2vnNhTEdKbPcnw_p7_zPQHnOy_OBrkksMBeud-gKqKZGhe-gDnzFVycVcSl4QMHukGYE4P_KbFXNYCAOnhABTe1mfwmootgFCPJ8sp3ifKWZa7mPWOmAyj6Gh548_63xXRfktTYuepNZDqnpTO2nfz8-4wIDgMC9WPnjeky-n8clk"
 order: 1
 ---
-
-## Memoria Curatorial & Diálogo Emocional
-
-«Silencio y Tempestad» nace de una obsesión por la dualidad que convive en la fisonomía humana: la quietud infranqueable del espíritu frente al torbellino de la experiencia vivida.
-
-Cada surco y tensión en la frente fue trazado capa sobre capa mediante polvo de carbón difuminado en seco y afiladas graduaciones de grafito de extrema dureza.
-
-El rostro no se expone como un simple registro fisonómico, sino como un mapa geológico de resistencia. La luz no incide como un mero recurso formal, sino como un catalizador dramático que arranca a la figura de la negrura absoluta del fondo, desnudando la mirada con una intensidad que desafía la distancia del espectador.
