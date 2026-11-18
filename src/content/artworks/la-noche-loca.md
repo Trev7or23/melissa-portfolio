@@ -1,7 +1,7 @@
 ---
 title: La noche loca
 year: 2010
-series: Los retumbatuercas
+series: Los retumbatuercas y la bocina
 kind: estudio
 technique: una pila de tecnicas
 support: me aguante de la mesa
