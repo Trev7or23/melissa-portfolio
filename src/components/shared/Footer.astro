@@ -1,30 +1,44 @@
 ---
+import { Icon } from 'astro-icon/components'
 const SOCIAL_ITEMS = [
-	{ label: 'Instagram @melissagutierrez.art', icon: 'photo_camera', href: 'https://instagram.com' },
-	{ label: 'Dossier en Behance', icon: 'palette', href: 'https://behance.net' },
-	{ label: 'contacto@melissagutierrez.art', icon: 'mail', href: 'mailto:contacto@melissagutierrez.art' },
-];
+  {
+    label: 'Instagram @melissagutierrez.art',
+    icon: 'instagram',
+    href: 'https://instagram.com',
+  },
+  { label: 'Dossier en Behance', icon: 'palette', href: 'https://behance.net' },
+  {
+    label: 'contacto@melissagutierrez.art',
+    icon: 'email',
+    href: 'mailto:contacto@melissagutierrez.art',
+  },
+]
 ---
 
 <footer class="w-full bg-surface-lowest border-t border-hairline">
-	<div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-8 sm:py-10 flex flex-wrap items-center justify-between gap-x-4 sm:gap-x-6 gap-y-3" data-reveal>
-		<div class="flex items-baseline gap-2 sm:gap-3">
-			<span class="font-display text-[18px] font-medium leading-[24px] text-ink sm:text-[20px] sm:leading-[28px]">Melissa Gutiérrez</span>
-			<span class="font-body text-[10px] leading-[14px] tracking-[0.08em] uppercase text-outline sm:text-[11px]">© 2025</span>
-		</div>
-		<div class="flex items-center gap-4 sm:gap-5">
-			{
-				SOCIAL_ITEMS.map((item) => (
-					<a
-						href={item.href}
-						aria-label={item.label}
-						title={item.label}
-						class="text-outline transition-colors hover:text-primary"
-					>
-						<span class="material-symbols-outlined text-[18px] leading-[18px]">{item.icon}</span>
-					</a>
-				))
-			}
-		</div>
-	</div>
+  <div
+    class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-8 sm:py-10 flex flex-wrap items-center justify-between gap-x-4 sm:gap-x-6 gap-y-3"
+    data-reveal
+  >
+    <div class="flex items-baseline gap-2 sm:gap-3">
+      <span class="font-display text-[18px] font-medium leading-[24px] text-ink sm:text-[20px] sm:leading-[28px]">
+        Melissa Gutiérrez
+      </span>
+      <span class="font-body text-[10px] leading-[14px] tracking-[0.08em] uppercase text-outline sm:text-[11px]">
+        © 2026
+      </span>
+    </div>
+    <div class="flex items-center gap-4 sm:gap-5">
+      {SOCIAL_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          aria-label={item.label}
+          title={item.label}
+          class="text-outline transition-colors hover:text-primary"
+        >
+          <Icon name={`mdi:${item.icon}`} class="text-2xl leading-[18px]" />
+        </a>
+      ))}
+    </div>
+  </div>
 </footer>

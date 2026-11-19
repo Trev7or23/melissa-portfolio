@@ -1,39 +1,24 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ArtworkDetail from '../../components/description/ArtworkDetail.astro';
-import { getCollection, render } from 'astro:content';
+import Layout from '@layouts/Layout.astro'
+import ArtworkDetail from '@components/description/ArtworkDetail.astro'
+import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
-	const entries = await getCollection('artworks');
-	return entries.map((entry) => ({
-		params: { slug: entry.id },
-		props: {
-			entry,
-			artwork: {
-				title: entry.data.title,
-				slug: entry.id,
-				year: entry.data.year,
-				series: entry.data.series,
-				kind: entry.data.kind,
-				technique: entry.data.technique,
-				support: entry.data.support,
-				dimensions: entry.data.dimensions,
-				availability: entry.data.availability,
-				description: entry.data.description,
-				curatorialStatement: entry.data.curatorialStatement,
-				image: entry.data.image,
-				order: entry.data.order,
-			},
-		},
-	}));
+  const entries = await getCollection('artworks')
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+    },
+  }))
 }
 
-const { artwork, entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry } = Astro.props
+const { Content } = await render(entry)
 ---
 
 <Layout>
-	<ArtworkDetail artwork={artwork}>
-		<Content />
-	</ArtworkDetail>
+  <ArtworkDetail entry={entry}>
+    <Content />
+  </ArtworkDetail>
 </Layout>

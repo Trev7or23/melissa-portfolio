@@ -1,52 +1,65 @@
 ---
-const NAV_ITEMS = [
-	{ label: 'Inicio', href: '/#inicio' },
-	{ label: 'Galería', href: '/#galeria' },
-	{ label: 'Sobre mí', href: '/#sobre-mi' },
-	{ label: 'Servicios', href: '/#servicios' },
-	{ label: 'Proceso', href: '/#proceso' },
-	{ label: 'Contacto', href: '/#contacto' },
-];
+import { Icon } from 'astro-icon/components'
 
-const activeHref = Astro.url.pathname + Astro.url.hash;
+const NAV_ITEMS = [
+  { label: 'Inicio', href: '/#inicio' },
+  { label: 'Galería', href: '/#galeria' },
+  { label: 'Sobre mí', href: '/#sobre-mi' },
+  { label: 'Servicios', href: '/#servicios' },
+  { label: 'Proceso', href: '/#proceso' },
+  { label: 'Contacto', href: '/#contacto' },
+]
+
+const activeHref = Astro.url.pathname + Astro.url.hash
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-bg-alt/75 backdrop-blur-md border-b border-hairline">
-	<div class="mx-auto max-w-[1440px] px-5 h-[72px] flex items-center justify-between">
-		<a href="/" class="flex flex-col justify-center text-left whitespace-nowrap">
-			<span class="font-display text-[20px] font-medium leading-[26px] tracking-[-0.015em] text-ink sm:text-[24px] sm:leading-[32px]">Melissa Gutiérrez</span>
-			<span class="font-body text-[10px] font-semibold leading-[13px] tracking-[0.1em] uppercase text-on-surface-variant sm:text-[11px] sm:leading-[14px] sm:tracking-[0.12em]">Artista Visual · Retrato</span>
-		</a>
-		<nav class="hidden lg:flex items-center gap-12" aria-label="Navegación principal">
-			{
-				NAV_ITEMS.map((item) => (
-					<a
-						href={item.href}
-						class:list={{
-							'text-primary': activeHref === item.href,
-							'text-on-surface-variant': activeHref !== item.href,
-							'font-body text-xs font-medium tracking-[0.08em] uppercase transition-colors': true,
-						}}
-					>
-						{item.label}
-					</a>
-				))
-			}
-		</nav>
-		<div class="flex items-center gap-3 sm:gap-4">
-			<a
-				href="https://wa.me/"
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label="Contactar por WhatsApp"
-				class="inline-flex items-center gap-2 px-3 py-2 sm:px-4 bg-primary-container text-on-primary-container font-body text-xs font-medium tracking-[0.08em] uppercase rounded transition-colors"
-			>
-				<span class="material-symbols-outlined text-[18px] leading-[18px]">chat</span>
-				<span class="hidden sm:inline">WhatsApp</span>
-			</a>
-			<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-				<span class="material-symbols-outlined text-[18px] leading-[18px] text-on-primary">person</span>
-			</div>
-		</div>
-	</div>
+  <div class="mx-auto max-w-[1440px] px-5 h-[72px] flex items-center justify-between">
+    <a
+      href="/"
+      class="flex flex-col justify-center text-left whitespace-nowrap"
+    >
+      <span class="font-display text-[20px] font-medium leading-[26px] tracking-[-0.015em] text-ink sm:text-[24px] sm:leading-[32px]">
+        Melissa Gutiérrez
+      </span>
+      <span class="font-body text-[10px] font-semibold leading-[13px] tracking-[0.1em] uppercase text-on-surface-variant sm:text-[11px] sm:leading-[14px] sm:tracking-[0.12em]">
+        Artista Visual · Retrato
+      </span>
+    </a>
+    <nav
+      class="hidden lg:flex items-center gap-12"
+      aria-label="Navegación principal"
+    >
+      {NAV_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          class:list={{
+            'text-primary': activeHref === item.href,
+            'text-on-surface-variant': activeHref !== item.href,
+            'font-body text-xs font-medium tracking-[0.08em] uppercase transition-colors': true,
+          }}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a
+        href="https://wa.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
+        class="inline-flex items-center gap-2 px-3 py-2 sm:px-4 bg-primary-container text-on-primary-container font-body text-xs font-medium tracking-[0.08em] uppercase rounded transition-colors"
+      >
+        <Icon name="mdi:message" class="text-[18px] leading-[18px]" />
+        <span class="hidden sm:inline">WhatsApp</span>
+      </a>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+        <Icon
+          name="mdi:account"
+          class="text-2xl leading-[18px] text-on-primary"
+        />
+      </div>
+    </div>
+  </div>
 </header>

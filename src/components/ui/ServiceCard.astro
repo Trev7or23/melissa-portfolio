@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components'
+import { render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  entry: CollectionEntry<'services'>
+}
+const { entry } = Astro.props
+
+const { icon, tag, title, characteristics, cta } = entry.data
+
+const { Content } = await render(entry)
+---
+
+<div
+  class="relative bg-surface-low p-6 rounded flex flex-col justify-between transition-all duration-300 hover:bg-surface-high max-w-[400px] mx-auto"
+  data-reveal
+>
+  <div class="flex flex-col gap-3">
+    <div class="w-12 h-12 rounded bg-surface-high flex items-center justify-center text-primary">
+      <Icon name={`mdi:${icon}`} class="text-[26px] leading-[26px]" />
+    </div>
+    <div class="flex flex-col">
+      <span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-primary">
+        {tag}
+      </span>
+      <h3 class="font-display text-[24px] font-normal leading-[32px] text-ink mt-2">
+        {title}
+      </h3>
+    </div>
+    <p class="font-body text-[13px] font-normal leading-[20px] text-on-surface-variant">
+      <Content />
+    </p>
+    <ul class="flex flex-col gap-2 pt-2 font-body text-[13px] font-normal leading-[20px] text-on-surface-variant">
+      {characteristics.map((item) => (
+        <li class="flex items-center gap-2">
+          <Icon
+            name="mdi:check-circle-outline"
+            class="text-2xl leading-[16px] text-primary"
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <a
+    href={cta.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="mt-6 w-full inline-flex items-center justify-center gap-2 py-3 bg-primary-container text-on-primary-container font-body text-xs font-medium tracking-[0.08em] uppercase rounded transition-all"
+  >
+    <Icon name={`mdi:${cta.icon}`} class="text-[18px] leading-[18px]" />
+    <span>{cta.text}</span>
+  </a>
+</div>

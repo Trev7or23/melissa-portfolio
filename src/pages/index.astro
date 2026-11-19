@@ -1,8 +1,42 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Home from '../components/home/Home.astro';
+import Hero from '@components/home/Hero.astro'
+import About from '@components/home/About.astro'
+import Gallery from '@components/home/Gallery.astro'
+import Services from '@components/home/Services.astro'
+import Process from '@components/home/Process.astro'
+import Contact from '@components/home/Contact.astro'
+
+import Layout from '@layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const artworks = await getCollection('artworks')
+// const artworks = entries.map((entry) => ({
+//   title: entry.data.title,
+//   slug: entry.id,
+//   year: entry.data.year,
+//   series: entry.data.series,
+//   kind: entry.data.kind,
+//   technique: entry.data.technique,
+//   support: entry.data.support,
+//   dimensions: entry.data.dimensions,
+//   availability: entry.data.availability,
+//   description: entry.data.description,
+//   curatorialStatement: entry.data.curatorialStatement,
+//   image: entry.data.image,
+//   order: entry.data.order,
+// }))
+
+const featured =
+  artworks.find((a) => a.data.kind === 'obra-maestra') ?? artworks[0]
 ---
 
 <Layout>
-	<Home />
+  <div class="flex flex-col w-full text-on-surface">
+    <Hero artwork={featured} />
+    <About />
+    <Gallery artworks={artworks} />
+    <Services />
+    <Process />
+    <Contact />
+  </div>
 </Layout>

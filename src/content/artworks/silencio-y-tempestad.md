@@ -1,13 +1,13 @@
 ---
 title: Silencio y Tempestad
 year: 2024
-series: "Fuerza & Quietud"
+series: 'Fuerza & Quietud'
 kind: obra-maestra
-technique: "Grafito de alta densidad (9B a 2H) y carbón vegetal prensado"
-support: "Papel de algodón 100% Fabriano Artístico 300 g/m²"
-dimensions: "80 × 110 cm"
-availability: "Colección privada"
-description: "Obra maestra 2024 que explora la tensión psicológica a través de densas masas de carbón vegetal y trazos filosos."
+technique: 'Grafito de alta densidad (9B a 2H) y carbón vegetal prensado'
+support: 'Papel de algodón 100% Fabriano Artístico 300 g/m²'
+dimensions: '80 × 110 cm'
+availability: 'Colección privada'
+description: 'Obra maestra 2024 que explora la tensión psicológica a través de densas masas de carbón vegetal y trazos filosos.'
 curatorialStatement: >-
   «Silencio y Tempestad» nace de una obsesión por la dualidad que convive en la
   fisonomía humana: la quietud infranqueable del espíritu frente al torbellino de
@@ -18,6 +18,6 @@ curatorialStatement: >-
   mero recurso formal, sino como un catalizador dramático que arranca a la figura
   de la negrura absoluta del fondo, desnudando la mirada con una intensidad que
   desafía la distancia del espectador.
-image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBgy6DLtRRn7wA3dFmsNaMI2nDtn85zhpKon30WTwMyeo1HCLc4qsfe-fDYnc2vnNhTEdKbPcnw_p7_zPQHnOy_OBrkksMBeud-gKqKZGhe-gDnzFVycVcSl4QMHukGYE4P_KbFXNYCAOnhABTe1mfwmootgFCPJ8sp3ifKWZa7mPWOmAyj6Gh548_63xXRfktTYuepNZDqnpTO2nfz8-4wIDgMC9WPnjeky-n8clk"
+image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgy6DLtRRn7wA3dFmsNaMI2nDtn85zhpKon30WTwMyeo1HCLc4qsfe-fDYnc2vnNhTEdKbPcnw_p7_zPQHnOy_OBrkksMBeud-gKqKZGhe-gDnzFVycVcSl4QMHukGYE4P_KbFXNYCAOnhABTe1mfwmootgFCPJ8sp3ifKWZa7mPWOmAyj6Gh548_63xXRfktTYuepNZDqnpTO2nfz8-4wIDgMC9WPnjeky-n8clk'
 order: 1
 ---

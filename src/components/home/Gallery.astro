@@ -1,80 +1,94 @@
 ---
-export interface Artwork {
-	title: string;
-	slug: string;
-	year?: number;
-	series?: string;
-	kind?: string;
-	technique?: string;
-	support?: string;
-	dimensions?: string;
-	availability?: string;
-	description?: string;
-	curatorialStatement?: string;
-	image?: string;
-	order?: number;
-}
+import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+import GalleryCard from '../ui/GalleryCard.astro'
 
 interface Props {
-	artworks: Artwork[];
+  artworks: CollectionEntry<'artworks'>[]
 }
 
-const { artworks } = Astro.props;
-const featured = artworks.find((a) => a.kind === 'obra-maestra') ?? artworks[0];
-const others = artworks.filter((a) => a.slug !== featured?.slug);
+const { artworks } = Astro.props
+const featured =
+  artworks.find((a) => a.data.kind === 'obra-maestra') ?? artworks[0]
+const { id: featuredId, data: featuredData } = featured
+
+const others = artworks.filter((a) => a.id !== featuredId)
 ---
 
 <section id="galeria" class="w-full bg-bg py-24">
-	<div class="w-full max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-16 flex flex-col gap-8">
-		<div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-reveal>
-			<div class="flex flex-col">
-				<div class="flex items-center gap-3 mb-2">
-					<span class="font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary before:content-[''] before:w-6 before:h-px before:bg-current before:mr-3">Colección &amp; Archivo Curado</span>
-				</div>
-				<h2 class="font-display text-[48px] font-normal leading-[56px] tracking-[-0.015em] text-ink">Obras Seleccionadas</h2>
-				<p class="font-body text-[15px] font-normal leading-[24px] tracking-[0.01em] text-on-surface-variant max-w-96 mt-4">Piezas en grafito y carbón sobre papel de algodón. Haz clic en cada obra para acceder a su ficha técnica completa y disponibilidad.</p>
-			</div>
-			<div class="flex items-center gap-2">
-				<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-outline">Filtro:</span>
-				<span class="inline-flex items-center px-3 py-1 rounded bg-primary text-on-primary font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase">Todas las Obras</span>
-			</div>
-		</div>
-		{artworks.length > 0 && (
-			<a href={`/pintura/${featured?.slug}`} class="group grid grid-cols-1 lg:grid-cols-2 bg-surface-lowest rounded overflow-hidden cursor-pointer" data-reveal>
-				<div class="relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[68vh] lg:max-h-[720px] bg-surface">
-					{featured?.image ? <img alt={"Obra " + featured?.title + " por Melissa Gutiérrez"} src={featured?.image} class="w-full h-full object-cover grayscale contrast(1.125) transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]" /> : null}
-					<div class="absolute inset-0 bg-linear-to-t from-surface-lowest/70 via-transparent to-transparent transition-opacity duration-[500ms]"></div>
-				</div>
-				<div class="flex flex-col justify-end p-6 lg:p-10 bg-surface-lowest">
-					<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-primary mb-1">Obra Maestra 2024</span>
-					<h3 class="font-display text-[32px] font-normal leading-[40px] text-ink">{featured?.title}</h3>
-					<p class="font-body text-[13px] font-normal leading-[20px] text-on-surface-variant mt-1">Exploración de la tensión psicológica a través de densas masas de carbón vegetal y trazos filosos.</p>
-					<div class="flex items-center justify-between mt-4 pt-3 border-t border-surface-highest">
-						<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.08em] text-outline">{featured?.dimensions}</span>
-						<span class="inline-flex items-center gap-1 font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary transition-transform duration-300 ease group-hover:translate-x-1">Ver Ficha Detallada <span class="material-symbols-outlined text-[16px] leading-[16px]">arrow_forward</span></span>
-					</div>
-				</div>
-			</a>
-		)}
-		{others.length > 0 && (
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
-				{others.map((art, index) => (
-					<a href={`/pintura/${art.slug}`} class="group block relative bg-surface-lowest rounded overflow-hidden cursor-pointer" data-reveal style={`--reveal-delay: ${index * 90}ms`}>
-						<div class="relative overflow-hidden aspect-[3/4] bg-surface">
-							{art.image ? <img alt={"Obra " + art.title + " por Melissa Gutiérrez"} src={art.image} class="w-full h-full object-cover grayscale contrast(1.125) transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]" /> : null}
-							<div class="absolute inset-0 bg-linear-to-t from-surface-lowest via-transparent to-transparent opacity-80 transition-opacity duration-[500ms]"></div>
-							<div class="absolute bottom-0 left-0 right-0 p-5">
-								<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-primary mb-1">{art.series}</span>
-								<h3 class="font-display text-[24px] font-normal leading-[32px] text-ink">{art.title}</h3>
-								<div class="flex items-center justify-between mt-4 pt-3 border-t border-surface-highest">
-									<span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.08em] text-outline">{art.dimensions}</span>
-									<span class="inline-flex items-center gap-1 font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary transition-transform duration-300 ease group-hover:translate-x-1">Ver Ficha <span class="material-symbols-outlined text-[16px] leading-[16px]">arrow_forward</span></span>
-								</div>
-							</div>
-						</div>
-					</a>
-				))}
-			</div>
-		)}
-	</div>
+  <div class="w-full max-w-[1440px] mx-auto px-5 md:px-8 lg:px-16 py-16 flex flex-col gap-8">
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between gap-4"
+      data-reveal
+    >
+      <div class="flex flex-col">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary before:content-[''] before:w-6 before:h-px before:bg-current before:mr-3">
+            Colección &amp; Archivo Curado
+          </span>
+        </div>
+        <h2 class="font-display text-[48px] font-normal leading-[56px] tracking-[-0.015em] text-ink">
+          Obras Seleccionadas
+        </h2>
+        <p class="font-body text-[15px] font-normal leading-[24px] tracking-[0.01em] text-on-surface-variant max-w-96 mt-4">
+          Piezas en grafito y carbón sobre papel de algodón. Haz clic en cada
+          obra para acceder a su ficha técnica completa y disponibilidad.
+        </p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-outline">
+          Filtro:
+        </span>
+        <span class="inline-flex items-center px-3 py-1 rounded bg-primary text-on-primary font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase">
+          Todas las Obras
+        </span>
+      </div>
+    </div>
+    {artworks.length > 0 && (
+      <a
+        href={`/pintura/${featuredId}`}
+        class="group grid grid-cols-1 lg:grid-cols-2 bg-surface-lowest rounded overflow-hidden cursor-pointer"
+        data-reveal
+      >
+        <div class="relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[68vh] lg:max-h-[720px] bg-surface">
+          {featuredData.image ? (
+            <img
+              alt={'Obra ' + featuredData.title + ' por Melissa Gutiérrez'}
+              src={featuredData.image}
+              class="w-full h-full object-cover grayscale contrast(1.125) transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+            />
+          ) : null}
+          <div class="absolute inset-0 bg-linear-to-t from-surface-lowest/70 via-transparent to-transparent transition-opacity duration-[500ms]"></div>
+        </div>
+        <div class="flex flex-col justify-end p-6 lg:p-10 bg-surface-lowest">
+          <span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.12em] uppercase text-primary mb-1">
+            Obra Maestra 2024
+          </span>
+          <h3 class="font-display text-[32px] font-normal leading-[40px] text-ink">
+            {featuredData.title}
+          </h3>
+          <p class="font-body text-[13px] font-normal leading-[20px] text-on-surface-variant mt-1">
+            Exploración de la tensión psicológica a través de densas masas de
+            carbón vegetal y trazos filosos.
+          </p>
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-surface-highest">
+            <span class="font-body text-[11px] font-semibold leading-[14px] tracking-[0.08em] text-outline">
+              {featuredData.dimensions}
+            </span>
+            <span class="inline-flex items-center gap-1 font-body text-xs font-medium leading-[16px] tracking-[0.08em] uppercase text-primary transition-transform duration-300 ease group-hover:translate-x-1">
+              Ver Ficha Detallada{' '}
+              <Icon name="mdi:arrow-right" class="text-[16px] leading-[16px]" />
+            </span>
+          </div>
+        </div>
+      </a>
+    )}
+    {others.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
+        {others.map((art, index) => (
+          <GalleryCard art={art} index={index} />
+        ))}
+      </div>
+    )}
+  </div>
 </section>
