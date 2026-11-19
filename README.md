@@ -8,12 +8,12 @@ and Zod-validated Markdown content collections.
 
 ## Stack
 
-| Concern   | Choice                                              |
-| --------- | --------------------------------------------------- |
-| Framework | Astro 7 (static output)                             |
-| Styling   | Tailwind CSS v4 — design tokens live in `@theme`    |
+| Concern   | Choice                                               |
+| --------- | ---------------------------------------------------- |
+| Framework | Astro 7 (static output)                              |
+| Styling   | Tailwind CSS v4 — design tokens live in `@theme`     |
 | Content   | Astro content collections (glob loader) + Zod schema |
-| Runtime   | [Bun](https://bun.sh)                               |
+| Runtime   | [Bun](https://bun.sh)                                |
 
 ## Getting started
 
@@ -50,21 +50,21 @@ designs/               # visual brief the implementation was built from
    `src/content.config.ts`, so a missing or malformed field fails the build
    with the exact validation error.
 
-   | Field                 | Type                                                 | Required |
-   | --------------------- | ---------------------------------------------------- | -------- |
-   | `title`               | string                                               | yes      |
-   | `slug`                | string                                               | yes      |
-   | `year`                | number                                               | yes      |
-   | `series`              | string                                               | yes      |
+   | Field                 | Type                                                | Required |
+   | --------------------- | --------------------------------------------------- | -------- |
+   | `title`               | string                                              | yes      |
+   | `slug`                | string                                              | yes      |
+   | `year`                | number                                              | yes      |
+   | `series`              | string                                              | yes      |
    | `kind`                | `obra-maestra` \| `serie` \| `estudio` \| `encargo` | yes      |
-   | `technique`           | string                                               | yes      |
-   | `support`             | string                                               | yes      |
-   | `dimensions`          | string                                               | yes      |
-   | `availability`        | string                                               | yes      |
-   | `description`         | string                                               | no       |
-   | `curatorialStatement` | string                                               | no       |
-   | `image`               | string (URL)                                         | no       |
-   | `order`               | number                                               | no       |
+   | `technique`           | string                                              | yes      |
+   | `support`             | string                                              | yes      |
+   | `dimensions`          | string                                              | yes      |
+   | `availability`        | string                                              | yes      |
+   | `description`         | string                                              | no       |
+   | `curatorialStatement` | string                                              | no       |
+   | `image`               | string (URL)                                        | no       |
+   | `order`               | number                                              | no       |
 
 3. Run `bun run build`.
 
